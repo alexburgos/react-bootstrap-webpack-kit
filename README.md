@@ -4,22 +4,25 @@
 Very simple starter kit for building React apps using React Bootstrap.
 
 ######Features
-  -Bundled with Webpack and hot reloading enabled through webpack-dev-server.
+  - Bundled with Webpack and hot reloading enabled through webpack-dev-server.
   
-  -JSX and ES2015 ready using Babel presets (included in .baberlrc).
+  - JSX and ES2015 ready using Babel presets (included in .baberlrc).
   
-  -Sass ready with node-sass and imported bootstrap stylesheet
+  - Sass ready with node-sass and imported bootstrap stylesheet
   
-  -Vanilla Javascript ready, no need for jQuery!
+  - Vanilla Javascript ready, no need for jQuery!
+  
+  - Uses ES6 modules to import multiple components into main.js
   
 
 ######Instructions
-  -Clone or download folder
+  - Clone or download folder
   
-  -Run `npm install`
+  - Run `npm install`
   
-  -`npm run dev` will start webpack server and watch for file changes
+  - `npm run build` will do a simple build 
   
-  -`npm run build` will do simple build
+  - `npm run dev` will start webpack server and watch for file changes
+
   
   
