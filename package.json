@@ -1,14 +1,11 @@
 {
-  "name": "react-webpack-kit",
+  "name": "offerpop-solutions",
   "version": "1.0.0",
-  "description": "starter-kit",
+  "description": "offerpop-solutions",
   "scripts": {
     "dev": "webpack-dev-server --progress",
     "build": "webpack --progress --watch"
   },
-  "keywords": [
-    "starter-kit"
-  ],
   "author": "alex burgos",
   "license": "ISC",
   "devDependencies": {
@@ -34,6 +31,7 @@
     "bootstrap-sass": "^3.3.6",
     "react": "^15.1.0",
     "react-bootstrap": "^0.30.0",
-    "react-dom": "^15.1.0"
+    "react-dom": "^15.1.0",
+    "react-router": "^2.6.0"
   }
 }
