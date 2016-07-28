@@ -1,22 +1,28 @@
 import React, { PropTypes, Component } from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
-import Dialog from 'material-ui/Dialog';
-import { orange500 } from 'material-ui/styles/colors';
-import FlatButton from 'material-ui/FlatButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import TextField from 'material-ui/TextField';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+import RaisedButton from 'material-ui/RaisedButton';
+import getQueryString from '../util.js';
+import { Leaderboard, MemeGenerator, Unlock, HashtagFaceoff } from './Experiences'
 
-const styles = {
-  container: {
-    textAlign: 'center',
-    paddingTop: 200,
-  },
-};
+//offerpop colors
+const sanMarino = '#4977AD',
+      dandelion = '#F4E334',
+      fireBush  = '#E89230';
 
 const muiTheme = getMuiTheme({
   palette: {
-    accent1Color: orange500,
+    primary1Color: sanMarino,
+    primary2Color: dandelion,
+    accent1Color: fireBush
   },
+  raisedButton: {
+    backgroundColor: dandelion,
+    primaryTextColot: '#000000'
+  }
 });
 
 class App extends Component {
@@ -24,66 +30,75 @@ class App extends Component {
     super(props);
 
     this.state = {
-      open: false,
+      value: 1,
+      demo: ''
     };
   }
 
+  handleChange = (event, index, value) => this.setState({ value });
 
-  handleRequestClose = () => {
-    this.setState({
-      open: false,
-    });
-  }
+  handleSubmit = () => console.log('submit form');
 
-  handleTouchTap = () => {
+  componentDidMount() {
+    let experience = getQueryString('experience');
+    console.log(experience);
     this.setState({
-      open: true,
-    });
+      demo: experience
+    })
   }
 
   render() {
-    const standardActions = (
-      <FlatButton
-        label="Ok"
-        primary={true}
-        onTouchTap={this.handleRequestClose}
-      />
-    );
+    let { demo } = this.state;
+    let content;
+
+    switch (demo) {
+      case 'leaderboard':
+        content = (<Leaderboard/>)
+        break;
+      case 'unlock':
+        content = (<Unlock/>)
+        break;
+      case 'memegenerator':
+        content = (<MemeGenerator/>)
+        break;
+      case 'hashtagfaceoff':
+        content = (<HashtagFaceoff/>)
+        break;
+      default:
+        content = (<h1>Hello Offerpop</h1>)
+    }
 
     return (
       <div>
-        <section className="OPSolutions__header">
-          <h1 className="text-primary text-center">Leaderboard</h1>
-          <p className="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <section className="OPExperience__container">
+          {content}
         </section>
-
-        <section className="OPSolutions__products">
-            <MuiThemeProvider muiTheme={muiTheme}>
-            <div style={styles.container}>
-            <Dialog
-              open={this.state.open}
-              title="Super Secret Password"
-              actions={standardActions}
-              onRequestClose={this.handleRequestClose}
-            >
-              1-2-3-4-5
-            </Dialog>
-            <h1>Material-UI</h1>
-            <h2>example project</h2>
-            <RaisedButton
-              label="Super Secret Password"
-              secondary={true}
-              onTouchTap={this.handleTouchTap}
+        <section className="OPExperience__form">
+        <h2>Want one of these custom Experiences?</h2>
+        <MuiThemeProvider theme={muiTheme}>
+          <form>
+            <label>Contact us</label>
+            <br/>
+            <TextField
+              hintText="Name"
             />
-          </div>
+            <br/>
+            <TextField
+              hintText="Email"
+            />
+            <br/>
+            <label>Select an Experience</label>
+            <br/>
+            <SelectField value={this.state.value} onChange={this.handleChange}>
+              <MenuItem value={1} primaryText="Leaderboard" />
+              <MenuItem value={2} primaryText="MemeGenerator" />
+              <MenuItem value={3} primaryText="PopToUnlock" />
+              <MenuItem value={4} primaryText="HashtagFaceoff" />
+            </SelectField>
+            <br/>
+            <RaisedButton label="Submit" primary={true} onClick={this.handleSubmit}/>
+          </form>
         </MuiThemeProvider>
-          <div className="OPSolutions__products-container">
-            <iframe src="http://offerpop.com/hashtag/gallery/8507" width="100%" height="2000px" frameBorder="0"></iframe>
-          </div>
-        </section>
-
-        <section className="OPSolutions__form">
-
         </section>
       </div>
     )
