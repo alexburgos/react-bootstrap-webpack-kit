@@ -29,13 +29,11 @@
   },
   "dependencies": {
     "bootstrap-sass": "^3.3.6",
-    "material-ui": "^0.15.2",
     "normalize.css": "^4.2.0",
     "react": "^15.1.0",
     "react-addons-css-transition-group": "^15.2.1",
     "react-bootstrap": "^0.30.0",
     "react-dom": "^15.1.0",
-    "react-router": "^2.6.0",
-    "react-tap-event-plugin": "^1.0.0"
+    "react-router": "^2.6.0"
   }
 }
