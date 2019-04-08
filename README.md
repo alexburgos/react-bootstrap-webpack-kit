@@ -1,6 +1,6 @@
-##React-Webpack-Bootstrap starter kit
+## React-Webpack-Bootstrap starter kit
 
-######Features
+###### Features
   - Bundled with Webpack and hot reloading enabled through webpack-dev-server.
 
   - JSX and ES2015 ready using Babel presets (included in .baberlrc).
@@ -12,7 +12,7 @@
   - Uses ES6 modules to import multiple components into main.js
 
 
-######Instructions
+###### Instructions
   - Clone or download folder
 
   - Run `npm install`
